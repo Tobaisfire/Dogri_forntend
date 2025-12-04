@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import './App.css'
 import { NAV_ITEMS } from './config'
-import { useAuth } from './context/AuthContext'
 import ManualTagging from './pages/ManualTagging'
 import PosTagging from './pages/PosTagging'
 import Analytics from './pages/Analytics'
@@ -10,7 +9,6 @@ import AmbiguityResolver from './pages/AmbiguityResolver'
 import LearningParadigms from './pages/LearningParadigms'
 import ModelComparison from './pages/ModelComparison'
 import Profile from './pages/Profile'
-import Login from './pages/Login'
 
 const PANEL_COMPONENTS = {
   manual: ManualTagging,
@@ -23,25 +21,9 @@ const PANEL_COMPONENTS = {
 }
 
 function App() {
-  const { isAuthenticated, isLoading, logout } = useAuth()
   const [activePanel, setActivePanel] = useState('manual')
   const ActiveComponent = PANEL_COMPONENTS[activePanel] ?? Placeholder
 
-  // Show loading state while checking authentication
-  if (isLoading) {
-    return (
-      <div className="app-shell" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh' }}>
-        <div style={{ color: '#cbd5e1', fontSize: '1.1rem' }}>Loading...</div>
-      </div>
-    )
-  }
-
-  // Show login page if not authenticated
-  if (!isAuthenticated) {
-    return <Login />
-  }
-
-  // Show main app if authenticated
   return (
     <div className="app-shell">
       <aside className="sidebar">
@@ -67,11 +49,6 @@ function App() {
             </button>
           ))}
         </nav>
-        <div className="sidebar-footer">
-          <button className="logout-button" onClick={logout}>
-            Logout
-          </button>
-        </div>
       </aside>
 
       <main className="main-content">

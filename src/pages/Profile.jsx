@@ -1,8 +1,4 @@
-import { useAuth } from '../context/AuthContext'
-
 function Profile() {
-  const { username } = useAuth()
-
   return (
     <div className="analytics-panel">
       <header className="manual-header">
@@ -16,13 +12,13 @@ function Profile() {
         <div className="profile-content">
           <div className="profile-avatar">
             <div className="avatar-circle">
-              {username ? username.charAt(0).toUpperCase() : 'U'}
+              U
             </div>
           </div>
           
           <div className="profile-info">
-            <h2>Username</h2>
-            <p className="profile-username">{username || 'Not available'}</p>
+            <h2>User</h2>
+            <p className="profile-username">Guest User</p>
           </div>
 
           <div className="profile-details">
