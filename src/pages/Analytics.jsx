@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { API_BASE } from '../config'
+import { useDataContext } from '../context/DataContext'
 
 const REQUIRED_COLUMNS_FALLBACK = [
   'file_id',
@@ -23,34 +24,16 @@ const formatNumber = (value) => {
 }
 
 function Analytics() {
-  const [analytics, setAnalytics] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const {
+    analytics,
+    analyticsLoading,
+    analyticsError,
+    reloadAnalytics,
+    setAnalyticsFromUpload,
+  } = useDataContext()
   const [uploading, setUploading] = useState(false)
   const [uploadError, setUploadError] = useState(null)
   const [lastUploadedName, setLastUploadedName] = useState(null)
-
-  const fetchAnalytics = async (forceReload = false) => {
-    try {
-      setError(null)
-      setLoading(true)
-      const url = `${API_BASE}/analytics${forceReload ? '?force_reload=true' : ''}`
-      const response = await fetch(url)
-      if (!response.ok) throw new Error('Failed to load analytics.')
-      const data = await response.json()
-      setAnalytics(data)
-      setLastUploadedName(null)
-    } catch (err) {
-      setAnalytics(null)
-      setError(err.message || 'Unable to load analytics.')
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  useEffect(() => {
-    fetchAnalytics()
-  }, [])
 
   const handleUpload = async (event) => {
     const file = event.target.files?.[0]
@@ -70,7 +53,7 @@ function Analytics() {
         throw new Error(message || 'Failed to parse uploaded file.')
       }
       const data = await response.json()
-      setAnalytics(data)
+      setAnalyticsFromUpload(data)
       setLastUploadedName(file.name)
     } catch (err) {
       setUploadError(err.message || 'Failed to upload analytics file.')
@@ -132,7 +115,7 @@ function Analytics() {
           </p>
         </div>
         <div className="analytics-actions">
-          <button className="ghost" onClick={() => fetchAnalytics(true)} disabled={loading}>
+          <button className="ghost" onClick={() => reloadAnalytics()} disabled={analyticsLoading}>
             Refresh Default
           </button>
           <label className="file-input-wrapper compact">
@@ -142,7 +125,7 @@ function Analytics() {
         </div>
       </header>
 
-      {error && <div className="error-banner">{error}</div>}
+      {analyticsError && <div className="error-banner">{analyticsError}</div>}
       {uploadError && <div className="error-banner">{uploadError}</div>}
 
       {analytics && (
@@ -207,7 +190,7 @@ function Analytics() {
         </>
       )}
 
-      {loading && <p className="muted">Loading analytics…</p>}
+      {analyticsLoading && <p className="muted">Loading analytics…</p>}
     </div>
   )
 }

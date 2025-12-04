@@ -1,4 +1,4 @@
-export const API_BASE = import.meta.env.VITE_API_BASE ?? 'http://127.0.0.1:8000'
+export const API_BASE = "https://tobaisfire-1-dogri-tag-backend.hf.space" ??   'http://127.0.0.1:8000'
 
 export const TAG_CATEGORIES = {
   Noun: ['N_NC', 'N_NP', 'N_NST', 'N_NV'],
@@ -18,7 +18,9 @@ export const NAV_ITEMS = [
   { id: 'manual', label: 'Tag', caption: 'डोगरी Tag' },
   { id: 'pos', label: 'POS Tagging' },
   { id: 'analytics', label: 'Analytics', caption: 'Dataset Insights' },
-  { id: 'comparison', label: 'Examples' },
+  { id: 'ambiguity', label: 'Ambiguity', caption: 'Resolver' },
+  { id: 'paradigms', label: 'Learning Paradigms', caption: 'Results Comparison' },
+  { id: 'comparison', label: 'Model Comparison', caption: 'Best Models' },
   { id: 'profile', label: 'Profile' }
 ]
 
