@@ -92,7 +92,7 @@ function ModelComparison() {
       <header className="manual-header">
         <div>
           <h1>Model Comparison</h1>
-          <p className="muted">Comprehensive evaluation of all POS tagging models for Dogri</p>
+          <p className="muted">Classical ML, Deep Learning, Transformers, and LLMs side-by-side.</p>
         </div>
       </header>
 

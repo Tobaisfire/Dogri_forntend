@@ -225,8 +225,8 @@ function LearningParadigms() {
     <div className="analytics-panel">
       <header className="manual-header">
         <div>
-          <h1>Learning Paradigms Results</h1>
-          <p className="muted">Comparative performance of different learning approaches for Dogri POS tagging</p>
+          <h1>Adaptive Evaluation</h1>
+          <p className="muted">Zero-shot, Few-shot, and Cross-lingual transfer results for Dogri POS tagging.</p>
         </div>
       </header>
 

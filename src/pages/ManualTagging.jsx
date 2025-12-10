@@ -131,9 +131,9 @@ function ManualTagging() {
     <div className="manual-panel">
       <header className="manual-header">
         <div>
-          <h1>Tagging</h1>
+          <h1>POS Annotation</h1>
           <p className="muted">
-            Sentence {Math.min(currentIndex + 1, sentenceQueue.length || 1)} / {sentenceQueue.length || '-'}
+            Manual tagging with Dogri-adapted ILPOSTS tagset • Sentence {Math.min(currentIndex + 1, sentenceQueue.length || 1)} / {sentenceQueue.length || '-'}
           </p>
         </div>
         <div className="header-actions">
@@ -246,6 +246,38 @@ function ManualTagging() {
           <button className="primary" onClick={handleAddSentence}>
             Queue Sentence
           </button>
+        </div>
+      </section>
+
+      <section className="manual-card">
+        <h2>Preprocessing Workflow (Reference)</h2>
+        <p className="muted">Steps applied before annotation. Read-only; does not affect current tagging flow.</p>
+        <div className="feature-grid">
+          <div className="feature-card">
+            <h3>Character cleaning</h3>
+            <p className="muted">Unicode correction and removal of corrupt symbols.</p>
+          </div>
+          <div className="feature-card">
+            <h3>Duplicate removal</h3>
+            <p className="muted">Repeated lines and redundant text removed.</p>
+          </div>
+          <div className="feature-card">
+            <h3>Sentence segmentation</h3>
+            <p className="muted">Rule-based detection using Dogri punctuation.</p>
+          </div>
+          <div className="feature-card">
+            <h3>Tokenisation</h3>
+            <p className="muted">Separation of words, clitics, and punctuation.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="manual-card">
+        <h2>Sample Annotated Output (Reference)</h2>
+        <p className="muted">Illustrative example from the methodology document; does not change your current sentence.</p>
+        <div className="example-box">
+          <div><strong>Tokenised:</strong> यह / किताब / अच्छी / है / ।</div>
+          <div><strong>Tags:</strong> PRON / NOUN / ADJ / AUX / PUNCT</div>
         </div>
       </section>
 

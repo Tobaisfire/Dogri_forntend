@@ -54,8 +54,8 @@ function AmbiguityResolver() {
     <div className="ambiguity-panel">
       <header className="manual-header">
         <div>
-          <h1>Ambiguity Resolver</h1>
-          <p className="muted">Before/after analytics plus curated examples from the documentation and dataset.</p>
+          <h1>Ambiguity Resolution</h1>
+          <p className="muted">Before/after analytics plus curated examples from documentation and dataset.</p>
         </div>
         <button className="ghost" onClick={reloadAmbiguity} disabled={ambiguityLoading}>
           Refresh
@@ -158,6 +158,43 @@ function AmbiguityResolver() {
           </section>
         </div>
       )}
+
+      <section className="manual-card">
+        <h2>Reference Rules</h2>
+        <p className="muted">Static reference from methodology tables; does not override computed ambiguity results.</p>
+        <div className="breakdown-table">
+          <div className="breakdown-row breakdown-head">
+            <span>Ambiguity Type</span>
+            <span>Example</span>
+            <span>Resolution</span>
+          </div>
+          <div className="breakdown-row">
+            <span>Pronoun vs Demonstrative</span>
+            <span>यह किताब</span>
+            <span>DEM if followed by noun; otherwise PRON</span>
+          </div>
+          <div className="breakdown-row">
+            <span>Postposition vs Noun</span>
+            <span>घर में</span>
+            <span>Tag as PSP when used as case marker</span>
+          </div>
+          <div className="breakdown-row">
+            <span>Reduplication vs Adverb</span>
+            <span>धीरे-धीरे</span>
+            <span>Tag RDP when morphological repetition occurs</span>
+          </div>
+          <div className="breakdown-row">
+            <span>Auxiliary vs Main Verb</span>
+            <span>गया था</span>
+            <span>Auxiliary when forming tense/aspect</span>
+          </div>
+          <div className="breakdown-row">
+            <span>Unknown / OOV</span>
+            <span>सरमद</span>
+            <span>Default to NOUN unless function word</span>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }

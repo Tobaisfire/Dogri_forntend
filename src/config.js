@@ -14,14 +14,39 @@ export const TAG_CATEGORIES = {
   Punctuation: ['PU_PU']
 }
 
-export const NAV_ITEMS = [
-  { id: 'manual', label: 'Tag', caption: 'डोगरी Tag' },
-  { id: 'pos', label: 'POS Tagging' },
-  { id: 'analytics', label: 'Analytics', caption: 'Dataset Insights' },
-  { id: 'ambiguity', label: 'Ambiguity', caption: 'Resolver' },
-  { id: 'paradigms', label: 'Learning Paradigms', caption: 'Results Comparison' },
-  { id: 'comparison', label: 'Model Comparison', caption: 'Best Models' },
-  { id: 'profile', label: 'Profile' }
+export const NAV_GROUPS = [
+  {
+    id: 'corpus',
+    label: 'Corpus Development',
+    items: [
+      { id: 'manual', label: 'POS Annotation', caption: 'Manual Tagging' },
+      { id: 'ambiguity', label: 'Ambiguity Resolution' },
+      { id: 'analytics', label: 'Dataset Analytics' },
+    ],
+  },
+  {
+    id: 'linguistic-resources',
+    label: 'Linguistic Resources',
+    items: [{ id: 'linguistic', label: 'Tagset & Features' }],
+  },
+  {
+    id: 'models',
+    label: 'Model Development',
+    items: [{ id: 'comparison', label: 'Model Comparison' }],
+  },
+  {
+    id: 'evaluation',
+    label: 'Adaptive Evaluation',
+    items: [{ id: 'paradigms', label: 'Learning Paradigms' }],
+  },
+  {
+    id: 'deployment',
+    label: 'Deployment & Ensemble',
+    items: [
+      { id: 'pos', label: 'Live Tagger', caption: 'Our Tagging UI' },
+      { id: 'ensemble', label: 'Ensemble Approach', caption: 'Proposed' },
+    ],
+  },
 ]
 
 export const TOKENIZER_REGEX = /[\u0900-\u097Fa-zA-Z0-9]+|[^\s]/gu

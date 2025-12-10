@@ -109,9 +109,9 @@ function Analytics() {
     <div className="analytics-panel">
       <header className="manual-header">
         <div>
-          <h1>Data Analytics</h1>
+          <h1>Dataset Analytics</h1>
           <p className="muted">
-            Insights generated from <code>Final_pos_tagged_200k(no error).xlsx</code> with on-demand uploads.
+            Insights from <code>Final_pos_tagged_200k(no error).xlsx</code> with on-demand uploads.
           </p>
         </div>
         <div className="analytics-actions">

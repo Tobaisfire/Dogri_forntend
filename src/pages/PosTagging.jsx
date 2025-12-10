@@ -237,8 +237,10 @@ function PosTagging() {
     <div className="pos-panel">
       <header className="manual-header">
         <div>
-          <h1>POS Tagging</h1>
-          <p className="muted">Compare model outputs side-by-side.</p>
+          <h1>Live Tagger</h1>
+          <p className="muted">
+            Real-time POS tagging.
+          </p>
         </div>
       </header>
 
